@@ -1,8 +1,9 @@
 /***************************************************************************************************
- * UC5
+ * UC6
  * Purpose : As a User need to follow pre-defined Password rules.
  *           Rule1 – minimum 8 Characters
- *           - NOTE – All rules must be passed
+ *           Rule2 – Should have at least 1 Upper Case
+ *
  *
  * @author Krunal Lad
  * @Since 28-06-2021
@@ -150,7 +151,7 @@ public class UserRegistrationProblem {
      * @return
      */
     public boolean checkPassword(String password){
-        String regex = "[A-Za-z0-9!@#&()–{}:;',?/*~$^+=<>]{8,}";
+        String regex = "(?=.*[A-Z])[A-Za-z0-9!@#&()–{}:;',?/*~$^+=<>]{8,}$";
 
         Pattern p = Pattern.compile(regex);
 
