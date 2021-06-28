@@ -1,8 +1,8 @@
 /***************************************************************************************************
- * UC3
- * Purpose : As a User need to enter a valid email
- *          - E.g. abc.xyz@bl.co.in - Email has 3 mandatory parts (abc, bl & co) and 2 optional (xyz & in) with
- *                 precise @ and . positions
+ * UC4
+ * Purpose : As a User need to follow pre-defined
+ *           Mobile Format - E.g. 91 9919819801 
+ *           - Country code follow by space and 10 digit number
  *
  * @author Krunal Lad
  * @Since 28-06-2021
@@ -39,7 +39,11 @@ public class UserRegistrationProblem {
         System.out.println("Enter the Email Address : ");
         String emailAddress = scanner.next();
 
-        usr.validateDetails(firstName,lastName,emailAddress);
+        System.out.println("Enter Mobile Number : ");
+        String mobileNumber = scanner.next();
+
+
+        usr.validateDetails(firstName,lastName,emailAddress,mobileNumber);
     }
 
     /**
@@ -112,14 +116,41 @@ public class UserRegistrationProblem {
     }
 
     /**
+     * Purpose : To check whether mobile number is valid or not
+     *
+     * @param mNumber input from user
+     * @return true if mobile number is valid else false
+     */
+    public boolean checkMobileNumber(String mNumber){
+
+        /**
+         * For India :
+         * Begins with 0 or 91
+         * Then contains 7,8 or 9
+         * Then contains 9 digits
+         */
+        String regex = "(0|91)?[7-9][0-9]{9}";
+
+        Pattern p = Pattern.compile(regex);
+
+        if (mNumber == null) {
+            return false;
+        }
+
+        Matcher m = p.matcher(mNumber);
+
+        return m.matches();
+    }
+
+    /**
      * Purpose : It validate user details
      *
-     * 
+     *
      * @param firstName input from user
      * @param lastName input from user
-     * @param email input from user                
+     * @param email input from user
      */
-    public void validateDetails(String firstName, String lastName,String email){
+    public void validateDetails(String firstName, String lastName,String email,String mobileNumber){
 
         if (usr.checkFirstName(firstName))
             System.out.println("Valid First Name");
@@ -135,6 +166,11 @@ public class UserRegistrationProblem {
             System.out.println("Valid Email Address");
         else
             System.out.println("Invalid Email Address");
+
+        if(usr.checkMobileNumber(mobileNumber))
+            System.out.println("Valid Mobile Number");
+        else
+            System.out.println("Invalid Mobile Number");
 
     }
 }
