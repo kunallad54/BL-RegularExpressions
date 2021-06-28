@@ -25,3 +25,6 @@
 
 7. Rule3 – Should have at least 1 numeric number in the password
    - NOTE – All rules must be passed
+
+8. Rule4 – Has exactly 1 Special Character
+   - NOTE – All rules must be passed
