@@ -1,9 +1,11 @@
 /***************************************************************************************************
- * UC7
+ * UC8
  * Purpose : As a User need to follow pre-defined Password rules.
  *           Rule1 – minimum 8 Characters
  *           Rule2 – Should have at least 1 Upper Case
  *           Rule3 – Should have at least 1 numeric number in the password
+ *           Rule4 – Has exactly 1 Special Character
+ *           NOTE – All rules must be passed
  *
  *
  * @author Krunal Lad
@@ -154,7 +156,7 @@ public class UserRegistrationProblem {
     public boolean checkPassword(String password){
 
         //Validating Password
-        String regex = "(?=.*[A-Z])(?=.*[0-9])[A-Za-z0-9!@#&()–{}:;',?/*~$^+=<>]{8,}$";
+        String regex = "^(?=.*[0-9])" + "(?=.*[a-z])(?=.*[A-Z])" + "(?=.*[@#$%^&+=])" + "(?=\\S+$).{8,}$";
 
         Pattern p = Pattern.compile(regex);
 
